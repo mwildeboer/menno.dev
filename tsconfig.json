@@ -1,0 +1,15 @@
+{
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "paths": {
+      "$assets/*": ["src/assets/*"],
+      "$components/*": ["src/components/*"],
+      "$layouts/*": ["src/layouts/*"],
+      "$lib/*": ["src/lib/*"],
+      "$styles/*": ["src/styles/*"],
+      "$svg/*": ["src/svg/*"]
+    }
+  }
+}

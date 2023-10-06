@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+export type Props = HTMLAttributes<"div">;
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<div {...rest} class:list={["grid md:grid-cols-2 md:gap-x-8 lg:gap-x-14 gap-y-5 md:gap-y-7", className]}>
+  <slot />
+</div>

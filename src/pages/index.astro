@@ -1,0 +1,226 @@
+---
+import { getCollection } from "astro:content";
+
+import Grid from "$components/Grid.astro";
+import Head from "$components/Head.astro";
+import Icon from "$components/Icon.astro";
+import Illustration from "$components/Illustration.astro";
+import Picture from "$components/Picture.astro";
+import Section from "$components/Section.astro";
+
+import "$styles/fonts.css";
+import "$styles/global.css";
+
+const jobs = await getCollection("job");
+const skills = await getCollection("skill");
+---
+
+<html lang="en">
+  <Head />
+
+  <body class="antialiased bg-white dark:bg-black px-4 md:px-8">
+    <section class="max-w-7xl lg:px-24 pt-10 md:pt-12 mb-32 md:mb-36 lg:mb-40 mx-auto w-full">
+      <Picture
+        name="menno"
+        alt="Photo Menno"
+        class="w-40 h-40 rounded-full mb-8 md:mb-10 mx-auto"
+        fetchpriority="high"
+        width={160}
+        height={160}
+      />
+
+      <h1
+        class="text-black dark:text-white font-black text-4xl md:text-6xl lg:text-[5rem] leading-tight md:leading-[1.1] lg:leading-[1.05] tracking-tight text-center mb-4 md:mb-8"
+      >
+        <span class="block">Menno Wildeboer</span>
+        <span class="block">Software Monsieur</span>
+      </h1>
+      <blockquote
+        class="text-gray-500 dark:text-gray-400 font-medium text-xl md:text-2xl lg:text-[1.75rem] lg:leading-snug tracking-tighter text-center mb-8 md:mb-12"
+      >
+        <span class="block md:inline">Full-stack software engineer with more than 12.5 years of experience,</span>
+        <span class="block md:inline">building for the Web within startup and enterprise environments.</span>
+      </blockquote>
+      <hr class="border-none bg-green-500 mx-auto h-[6px] w-24" />
+    </section>
+
+    <Section marginBottom>
+      <h2
+        class="text-black dark:text-white font-bold text-2xl md:text-[1.75rem] lg:text-3xl tracking-tighter mb-1 md:mb-2"
+      >
+        Technical skills
+      </h2>
+      <p
+        class="text-gray-500 dark:text-gray-400 font-medium text-lg md:text-[1.3rem] lg:text-[1.4rem] md:leading-snug tracking-tight mb-8 md:mb-10"
+      >
+        From early stage startups to enterprises, during the ride I worked with the following:
+      </p>
+
+      <Grid>
+        {
+          skills.map((skill) => (
+            <div class="flex items-top">
+              <Illustration name={skill.data.image} class="w-16 md:w-20 h-16 md:h-20 rounded-xl" />
+              <div class="flex-1 ml-4">
+                <h3
+                  class:list={[
+                    "text-black dark:text-white font-bold text-lg md:text-xl tracking-tight",
+                    { "mb-[0.125rem] md:mb-1": !!skill.data.href },
+                  ]}
+                >
+                  {skill.data.href ? (
+                    <a
+                      class="link-2"
+                      href={skill.data.href}
+                      title={skill.data.title}
+                      aria-label={skill.data.title}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {skill.data.title}
+                    </a>
+                  ) : (
+                    skill.data.title
+                  )}
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400 text-[0.9375rem] md:text-base tracking-tight">
+                  <Fragment set:html={skill.body} />
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </Grid>
+    </Section>
+
+    <Section marginBottom>
+      <h2
+        class="text-black dark:text-white font-bold text-2xl md:text-[1.75rem] lg:text-3xl tracking-tighter mb-1 md:mb-2"
+      >
+        Experience
+      </h2>
+      <p
+        class="text-gray-500 dark:text-gray-400 font-medium text-lg md:text-[1.3rem] lg:text-[1.4rem] md:leading-snug tracking-tight mb-8 md:mb-10"
+      >
+        Over the years I worked for big companies, agencies, media outlets and startups.
+      </p>
+
+      <Grid>
+        {
+          jobs.map((job) => (
+            <div class="flex items-top">
+              <Picture
+                name={job.data.image}
+                alt={job.data.title}
+                class="w-16 md:w-20 h-16 md:h-20 rounded-xl"
+                width={80}
+                height={80}
+              />
+
+              <div class="flex-1 ml-4">
+                <h3 class="text-black dark:text-white font-bold text-lg md:text-xl tracking-tight mb-[0.125rem] md:mb-1">
+                  {job.data.href ? (
+                    <a
+                      class="link-2"
+                      href={job.data.href}
+                      title={job.data.title}
+                      aria-label={job.data.title}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {job.data.title}
+                    </a>
+                  ) : (
+                    job.data.title
+                  )}
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400 text-[0.9375rem] md:text-base tracking-tight">{job.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </Grid>
+    </Section>
+
+    <Section>
+      <h2
+        class="text-black dark:text-white font-bold text-2xl md:text-[1.75rem] lg:text-3xl tracking-tighter mb-1 md:mb-2"
+      >
+        Let's connect
+      </h2>
+      <p
+        class="text-gray-500 dark:text-gray-400 font-medium text-lg md:text-[1.3rem] lg:text-[1.4rem] md:leading-snug tracking-tight mb-4 lg:mb-6"
+      >
+        Have a cool idea or just wanna talk about tech? Let's grab a coffee, beer or cocktail!
+      </p>
+      <button
+        class="appearance-none bg-green-600 hover:bg-green-700 outline-green-700 transition-colors font-semibold text-lg text-white tracking-tight rounded-full inline-flex items-center gap-x-2 px-8 py-4 w-full md:w-auto"
+        id="contact-button"
+        type="button"
+      >
+        <Icon class="w-5 h-5" name="email" />
+         Contact me</button
+      >
+    </Section>
+
+    <footer class="flex max-w-7xl py-4 md:py-6 mx-auto w-full">
+      <p class="flex-1 text-gray-500 dark:text-gray-400 text-sm md:text-base tracking-tight">
+        Made with <a
+          class="link"
+          href="https://astro.build/"
+          title="Astro"
+          aria-label="Astro"
+          target="_blank"
+          rel="noreferrer">Astro</a
+        >. Source is <a
+          class="link"
+          href="https://github.com/mwildeboer/menno.dev"
+          title="Source"
+          aria-label="Source"
+          target="_blank"
+          rel="noreferrer">here</a
+        >.
+      </p>
+      <ul class="flex gap-3 md:gap-4">
+        <li>
+          <a
+            class="outline-green-500"
+            href="https://github.com/mwildeboer/"
+            title="GitHub"
+            aria-label="GitHub"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon class="text-black dark:text-white w-6 md:w-8 h-6 md:h-8" name="github" />
+          </a>
+        </li>
+        <li>
+          <a
+            class="outline-green-500"
+            href="https://www.linkedin.com/in/mennowildeboer/"
+            title="LinkedIn"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon class="w-6 md:w-8 h-6 md:h-8" name="linkedin" />
+          </a>
+        </li>
+      </ul>
+    </footer>
+    <script>
+      const m = "znvygb:bzr.zraab@tznvy.pbz";
+      const b = document.getElementById("contact-button");
+      const f = function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        window.location.href = m.replace(/[a-zA-Z]/g, function (c) {
+          return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+        });
+      };
+
+      b.addEventListener("touchend", f);
+      b.addEventListener("click", f);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: https://menno.dev/sitemap.xml
+host: https://menno.dev

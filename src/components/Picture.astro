@@ -1,0 +1,22 @@
+---
+import { PictureSet } from "$lib/picture";
+
+export interface Props extends Omit<astroHTML.JSX.ImgHTMLAttributes, "src" | "width" | "height"> {
+  name: string;
+  width: number;
+  height: number;
+}
+
+const { name, width, height, ...rest } = Astro.props;
+const pictureSet = new PictureSet();
+const avif = await pictureSet.process(name, "avif", width, height);
+const jpeg = await pictureSet.process(name, "jpeg", width, height);
+const webp = await pictureSet.process(name, "webp", width, height);
+---
+
+<picture class="contents">
+  <source srcset={avif.srcset} type="image/avif" />
+  <source srcset={webp.srcset} type="image/webp" />
+  <source srcset={jpeg.srcset} />
+  <img src={jpeg.src} width={width} height={height} {...rest} />
+</picture>

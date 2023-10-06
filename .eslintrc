@@ -1,0 +1,30 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["solid"],
+  "extends": ["eslint:recommended"],
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "extends": ["plugin:astro/recommended"],
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "parserOptions": {
+        "project": ["./tsconfig.json"],
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      }
+    }
+  ]
+}

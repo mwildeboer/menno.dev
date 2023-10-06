@@ -1,0 +1,18 @@
+---
+import { getFileName } from "$lib/file";
+
+export interface Props {
+  name: string;
+  class?: string;
+}
+
+const { name, ...rest } = Astro.props;
+const illustrations = await Astro.glob("../svg/illustrations/*.astro");
+const illustration = illustrations.find((illustration) => {
+  const fileName = getFileName(illustration.file).toLocaleLowerCase();
+  return fileName === name;
+});
+const Component = illustration ? illustration.default : Fragment;
+---
+
+<Component {...rest} />

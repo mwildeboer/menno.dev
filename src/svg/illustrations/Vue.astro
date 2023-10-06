@@ -1,0 +1,16 @@
+---
+export interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" fill="#C7EFDC"></rect>
+  <path
+    d="M151.087 51.3985L127.994 91.397L104.9 51.3993H27.9962L127.994 224.602L227.992 51.3978L151.087 51.3985Z"
+    fill="#41B883"></path>
+  <path
+    d="M151.087 51.3985L127.994 91.397L104.9 51.3993L67.9954 51.3993L127.994 155.319L187.992 51.3985L151.087 51.3985Z"
+    fill="#34495E"></path>
+</svg>

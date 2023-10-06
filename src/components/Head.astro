@@ -1,0 +1,36 @@
+---
+const title = "Menno Wildeboer | Software Engineer from Amsterdam";
+const description =
+  "Menno Wildeboer is a Software Engineer from Amsterdam. My goal is to create great user experiences on web & mobile applications. I work with React, Golang, Swift, Ruby on Rails and more.";
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>{title}</title>
+  <meta content={description} name="description" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <meta name="msapplication-TileColor" content="#00aba9" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="robots" content="follow, index" />
+  <meta name="apple-mobile-web-app-title" content="menno.dev" />
+
+  <meta name="og:site_name" property="og:site_name" content="Menno Wildeboer" />
+  <meta name="og:type" property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={Astro.url} />
+
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <link rel="canonical" href="https://menno.dev/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="preload" href="/fonts/Inter-roman.var.woff2" as="font" type="font/woff2" crossorigin />
+</head>

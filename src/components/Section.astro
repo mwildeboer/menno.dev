@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"section"> {
+  marginBottom?: boolean;
+}
+
+const { class: className, marginBottom = false, ...rest } = Astro.props;
+---
+
+<section
+  {...rest}
+  class:list={[
+    "border-b border-gray-200 dark:border-gray-800  max-w-7xl pb-10 md:pb-12 lg:pb-16 mx-auto w-full",
+    { "mb-10 md:mb-12 lg:mb-16": marginBottom },
+    className,
+  ]}
+>
+  <slot />
+</section>
