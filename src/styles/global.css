@@ -6,7 +6,7 @@
   .link,
   .link-2 {
     @apply text-black dark:text-white;
-    @apply border-gray-200 dark:border-gray-700 hover:border-green-500  outline-green-500;
+    @apply border-gray-200 dark:border-gray-700 hover:border-purple-500  outline-purple-500;
     @apply transition-colors;
   }
 
