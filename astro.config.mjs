@@ -15,7 +15,11 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    vercel(),
+    vercel({
+      webAnalytics: {
+        enabled: true,
+      },
+    }),
   ],
   build: {
     inlineStylesheets: `always`,
