@@ -2,12 +2,12 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 import compress from "astro-compress";
 
 export default defineConfig({
   site: "https://menno.dev",
-  output: "hybrid",
+  output: "static",
   integrations: [
     mdx(),
     compress(),
