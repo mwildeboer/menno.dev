@@ -1,18 +1,24 @@
 ---
+import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
 
 import Grid from "$components/Grid.astro";
 import Head from "$components/Head.astro";
 import Icon from "$components/Icon.astro";
 import Illustration from "$components/Illustration.astro";
-import Picture from "$components/Picture.astro";
 import Section from "$components/Section.astro";
+
+import imageMenno from "$assets/images/menno.png";
 
 import "$styles/fonts.css";
 import "$styles/global.css";
 
 const jobs = await getCollection("job");
 const skills = await getCollection("skill");
+
+const images = await Astro.glob("../assets/images/*.png").then((images) => {
+  return images.map((image) => image.default);
+});
 ---
 
 <html lang="en">
@@ -21,9 +27,12 @@ const skills = await getCollection("skill");
   <body class="antialiased bg-white dark:bg-black px-4 md:px-8">
     <section class="max-w-7xl lg:px-24 pt-10 md:pt-12 mb-32 md:mb-36 lg:mb-40 mx-auto w-full">
       <Picture
-        name="menno"
-        alt="Photo Menno"
         class="w-32 md:w-40 h-32: mdh-40 rounded-full mb-8 md:mb-10 mx-auto"
+        pictureAttributes={{ class: "contents" }}
+        src={imageMenno}
+        alt="Photo Menno"
+        formats={["avif", "webp"]}
+        densities={[2, 3]}
         width={160}
         height={160}
       />
@@ -109,9 +118,12 @@ const skills = await getCollection("skill");
           jobs.map((job) => (
             <div class="flex items-top">
               <Picture
-                name={job.data.image}
-                alt={job.data.title}
                 class="w-16 md:w-20 h-16 md:h-20 rounded-xl"
+                pictureAttributes={{ class: "contents" }}
+                src={images.find((image) => image.src.includes(job.data.image))}
+                alt={job.data.title}
+                formats={["avif", "webp"]}
+                densities={[2, 3]}
                 width={80}
                 height={80}
               />
@@ -208,18 +220,19 @@ const skills = await getCollection("skill");
       </ul>
     </footer>
     <script>
-      const m = "znvygb:bzr.zraab@tznvy.pbz";
-      const b = document.getElementById("contact-button");
-      const f = function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        window.location.href = m.replace(/[a-zA-Z]/g, function (c) {
+      const email = "znvygb:bzr.zraab@tznvy.pbz";
+      const button = document.getElementById("contact-button")!;
+      const handler = function (event: MouseEvent | TouchEvent) {
+        event.stopPropagation();
+        event.preventDefault();
+        window.location.href = email.replace(/[a-zA-Z]/g, function (c) {
+          // @ts-ignore
           return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
         });
       };
 
-      b.addEventListener("touchend", f);
-      b.addEventListener("click", f);
+      button.addEventListener("touchend", handler);
+      button.addEventListener("click", handler);
     </script>
   </body>
 </html>

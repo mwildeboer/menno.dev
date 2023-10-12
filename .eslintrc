@@ -1,6 +1,5 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["solid"],
   "extends": ["eslint:recommended"],
   "overrides": [
     {
@@ -26,5 +25,9 @@
         }
       }
     }
-  ]
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  }
 }

@@ -11,5 +11,6 @@
       "$styles/*": ["src/styles/*"],
       "$svg/*": ["src/svg/*"]
     }
-  }
+  },
+  "exclude": ["node_modules"]
 }
