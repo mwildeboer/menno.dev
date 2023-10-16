@@ -12,7 +12,7 @@
     "type:check": "astro check && tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
-    "astro": "^3.3.0",
+    "astro": "^3.3.1",
     "mdx": "^0.3.1"
   },
   "devDependencies": {
@@ -21,9 +21,9 @@
     "@astrojs/sitemap": "^3.0.1",
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vercel": "^5.0.2",
-    "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "@typescript-eslint/parser": "^6.7.5",
-    "@types/node": "^20.8.5",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "@types/node": "^20.8.6",
     "astro-compress": "^2.0.15",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.51.0",
