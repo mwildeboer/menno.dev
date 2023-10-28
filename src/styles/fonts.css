@@ -4,5 +4,5 @@
   font-display: optional;
   font-style: normal;
   font-named-instance: "Regular";
-  src: url("/fonts/Inter-roman.var.woff2") format("woff2");
+  src: url("/fonts/Inter-roman.var.woff2?v=3.19") format("woff2");
 }
