@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Inter var";
   font-weight: 100 900;
-  font-display: optional;
+  font-display: swap;
   font-style: normal;
   font-named-instance: "Regular";
-  src: url("/fonts/Inter-roman.var.woff2?v=3.19") format("woff2");
+  src: url("/fonts/Inter-roman.var.woff2") format("woff2");
 }
