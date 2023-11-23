@@ -7,8 +7,8 @@ module.exports = {
       sans: ["Inter var", "-apple-system", "system-ui", "Segoe UI", "Roboto", "Helvetica"],
     },
     letterSpacing: {
-      tighter: "-0.04em",
-      tight: "-0.025em",
+      tighter: "-0.025em",
+      tight: "-0.0125em",
     },
   },
 } satisfies Config;
