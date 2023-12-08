@@ -5,10 +5,13 @@
     {
       "files": ["*.astro"],
       "parser": "astro-eslint-parser",
-      "extends": ["plugin:astro/recommended"],
+      "extends": ["plugin:astro/recommended", "plugin:tailwindcss/recommended"],
       "parserOptions": {
         "parser": "@typescript-eslint/parser",
         "extraFileExtensions": [".astro"]
+      },
+      "rules": {
+        "tailwindcss/classnames-order": "off"
       }
     },
     {
