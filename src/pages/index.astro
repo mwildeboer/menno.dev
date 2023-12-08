@@ -115,7 +115,7 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
 
       <Grid>
         {
-          jobs.map((job) => (
+          jobs.reverse().map((job) => (
             <div class="flex items-top">
               <Picture
                 class="w-16 md:w-20 h-16 md:h-20 rounded-xl"
