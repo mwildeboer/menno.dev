@@ -27,7 +27,7 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
   <body class="antialiased bg-white dark:bg-black px-4 md:px-8">
     <section class="max-w-7xl lg:px-24 pt-10 md:pt-12 mb-32 md:mb-36 lg:mb-40 mx-auto w-full">
       <Picture
-        class="w-32 md:w-40 h-32 md:h-40 rounded-full mb-8 md:mb-10 mx-auto"
+        class="size-32 md:size-40 rounded-full mb-8 md:mb-10 mx-auto"
         pictureAttributes={{ class: "contents" }}
         src={imageMenno}
         alt="Photo Menno"
@@ -68,7 +68,7 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
         {
           skills.map((skill) => (
             <div class="flex items-start">
-              <Illustration name={skill.data.image} class="w-16 md:w-20 h-16 md:h-20 rounded-xl" />
+              <Illustration name={skill.data.image} class="size-16 md:size-20 rounded-xl" />
               <div class="flex-1 ml-4">
                 <h3
                   class:list={[
@@ -118,7 +118,7 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
           jobs.reverse().map((job) => (
             <div class="flex items-start">
               <Picture
-                class="w-16 md:w-20 h-16 md:h-20 rounded-xl"
+                class="size-16 md:size-20 rounded-xl"
                 pictureAttributes={{ class: "contents" }}
                 src={images.find((image) => image.src.includes(job.data.image))}
                 alt={job.data.title}
@@ -169,8 +169,8 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
         id="contact-button"
         type="button"
       >
-        <Icon class="w-5 h-5" name="email" />
-         Contact me</button
+        <Icon class="size-5" name="email" />
+        Contact me</button
       >
     </Section>
 
@@ -202,7 +202,7 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon class="text-black dark:text-white w-6 md:w-8 h-6 md:h-8" name="github" />
+            <Icon class="text-black dark:text-white size-6 md:size-8" name="github" />
           </a>
         </li>
         <li>
@@ -214,7 +214,7 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon class="w-6 md:w-8 h-6 md:h-8" name="linkedin" />
+            <Icon class="size-6 md:size-8" name="linkedin" />
           </a>
         </li>
       </ul>
