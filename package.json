@@ -12,28 +12,27 @@
     "type:check": "astro check && tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
-    "astro": "^4.2.1",
+    "astro": "^4.2.7",
     "mdx": "^0.3.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.4.1",
-    "@astrojs/mdx": "^2.0.5",
+    "@astrojs/mdx": "^2.1.1",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
-    "@astrojs/vercel": "^7.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
-    "@types/node": "^20.11.5",
+    "@astrojs/vercel": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "@types/node": "^20.11.13",
     "astro-compress": "^2.2.8",
     "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.3",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-tailwindcss": "^3.14.0",
+    "eslint-plugin-tailwindcss": "^3.14.1",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
-    "vercel": "^32.6.1",
-    "vite": "^5.0.11"
+    "vite": "^5.0.12"
   }
 }
