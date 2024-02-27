@@ -10,7 +10,8 @@
       "$lib/*": ["src/lib/*"],
       "$styles/*": ["src/styles/*"],
       "$svg/*": ["src/svg/*"]
-    }
+    },
+    "types": ["@cloudflare/workers-types/2023-07-01"]
   },
   "exclude": ["node_modules"]
 }
