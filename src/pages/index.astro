@@ -1,6 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
+import type { ImageMetadata } from "astro";
 
 import Grid from "$components/Grid.astro";
 import Head from "$components/Head.astro";
@@ -16,8 +17,8 @@ import "$styles/global.css";
 const jobs = await getCollection("job");
 const skills = await getCollection("skill");
 
-const images = await Astro.glob("../assets/images/*.png").then((images) => {
-  return images.map((image) => image.default);
+const images = await Astro.glob<Record<string, ImageMetadata>>("../assets/images/*.png").then((images) => {
+  return images.map((image) => image.default as ImageMetadata);
 });
 ---
 
@@ -46,7 +47,7 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
       <blockquote
         class="text-gray-500 dark:text-gray-400 font-medium text-xl md:text-2xl lg:text-[1.75rem] lg:leading-snug tracking-tighter text-center mb-8 md:mb-12"
       >
-        <span class="block md:inline">Full-stack software engineer with more than 12.5 years of experience,{` `}</span>
+        <span class="block md:inline">Full-stack software engineer with more than 15 years of experience,{` `}</span>
         <span class="block md:inline">building for the Web within startup and enterprise environments.</span>
       </blockquote>
       <hr class="border-none bg-purple-500 mx-auto h-[6px] w-24" />
@@ -115,40 +116,47 @@ const images = await Astro.glob("../assets/images/*.png").then((images) => {
 
       <Grid>
         {
-          jobs.reverse().map((job) => (
-            <div class="flex items-start">
-              <Picture
-                class="size-16 md:size-20 rounded-xl"
-                pictureAttributes={{ class: "contents" }}
-                src={images.find((image) => image.src.includes(job.data.image))}
-                alt={job.data.title}
-                formats={["avif", "webp"]}
-                densities={[2, 3]}
-                width={80}
-                height={80}
-              />
+          jobs.reverse().map((job) => {
+            const image = images.find((image) => image.src.includes(job.data.image));
+            return (
+              <div class="flex items-start">
+                {image && (
+                  <Picture
+                    class="size-16 md:size-20 rounded-xl"
+                    pictureAttributes={{ class: "contents" }}
+                    src={image}
+                    alt={job.data.title}
+                    formats={["avif", "webp"]}
+                    densities={[2, 3]}
+                    width={80}
+                    height={80}
+                  />
+                )}
 
-              <div class="flex-1 ml-4">
-                <h3 class="text-black dark:text-white font-bold text-lg md:text-xl tracking-tight mb-[0.125rem] md:mb-1">
-                  {job.data.href ? (
-                    <a
-                      class="link-2"
-                      href={job.data.href}
-                      title={job.data.title}
-                      aria-label={job.data.title}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {job.data.title}
-                    </a>
-                  ) : (
-                    job.data.title
-                  )}
-                </h3>
-                <p class="text-gray-500 dark:text-gray-400 text-[0.9375rem] md:text-base tracking-tight">{job.body}</p>
+                <div class="flex-1 ml-4">
+                  <h3 class="text-black dark:text-white font-bold text-lg md:text-xl tracking-tight mb-0.5 md:mb-1">
+                    {job.data.href ? (
+                      <a
+                        class="link-2"
+                        href={job.data.href}
+                        title={job.data.title}
+                        aria-label={job.data.title}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {job.data.title}
+                      </a>
+                    ) : (
+                      job.data.title
+                    )}
+                  </h3>
+                  <p class="text-gray-500 dark:text-gray-400 text-[0.9375rem] md:text-base tracking-tight">
+                    {job.body}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         }
       </Grid>
     </Section>

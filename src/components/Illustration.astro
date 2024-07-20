@@ -12,7 +12,7 @@ const illustration = illustrations.find((illustration) => {
   const fileName = getFileName(illustration.file).toLocaleLowerCase();
   return fileName === name;
 });
-const Component = illustration ? illustration.default : Fragment;
+const Component = illustration ? illustration.default : undefined;
 ---
 
-<Component {...rest} />
+{Component && <Component {...rest} />}

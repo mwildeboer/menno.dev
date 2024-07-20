@@ -12,7 +12,7 @@ const icon = icons.find((icon) => {
   const fileName = getFileName(icon.file).toLocaleLowerCase();
   return fileName === name;
 });
-const Component = icon ? icon.default : Fragment;
+const Component = icon ? icon.default : undefined;
 ---
 
-<Component {...rest} />
+{Component && <Component {...rest} />}
