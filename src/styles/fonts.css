@@ -1,8 +1,9 @@
 @font-face {
-  font-family: "Inter var";
+  font-family: "InterVariable";
+  font-feature-settings: "liga" 1, "calt" 1;
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
-  font-named-instance: "Regular";
+  font-optical-sizing: auto;
   src: url("/fonts/InterVariable.woff2") format("woff2");
 }
