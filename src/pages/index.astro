@@ -14,12 +14,9 @@ import imageMenno from "$assets/images/menno.png";
 import "$styles/fonts.css";
 import "$styles/global.css";
 
-const jobs = await getCollection("job");
-const skills = await getCollection("skill");
-
-const images = await Astro.glob<Record<string, ImageMetadata>>("../assets/images/*.png").then((images) => {
-  return images.map((image) => image.default as ImageMetadata);
-});
+const jobs = (await getCollection("job")).sort((a, b) => a.id.localeCompare(b.id));
+const skills = (await getCollection("skill")).sort((a, b) => a.id.localeCompare(b.id));
+const images = import.meta.glob<{ default: ImageMetadata }>("../assets/images/*.png");
 ---
 
 <html lang="en">
@@ -117,14 +114,15 @@ const images = await Astro.glob<Record<string, ImageMetadata>>("../assets/images
       <Grid>
         {
           jobs.reverse().map((job) => {
-            const image = images.find((image) => image.src.includes(job.data.image));
+            const imageKey = Object.keys(images).find((key) => key.includes(job.data.image)) as string;
+            const image = images[imageKey];
             return (
               <div class="flex items-start">
                 {image && (
                   <Picture
                     class="size-16 md:size-20 rounded-xl"
                     pictureAttributes={{ class: "contents" }}
-                    src={image}
+                    src={image()}
                     alt={job.data.title}
                     formats={["avif", "webp"]}
                     densities={[2, 3]}

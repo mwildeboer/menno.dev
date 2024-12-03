@@ -1,7 +1,8 @@
 import { z, defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
 
 const jobCollection = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/job" }),
   schema: z.object({
     title: z.string(),
     image: z.string(),
@@ -10,7 +11,7 @@ const jobCollection = defineCollection({
 });
 
 const skillCollection = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/skill" }),
   schema: z.object({
     title: z.string(),
     image: z.string(),

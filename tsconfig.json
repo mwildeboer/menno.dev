@@ -2,7 +2,6 @@
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "baseUrl": ".",
-    "moduleResolution": "node",
     "paths": {
       "$assets/*": ["src/assets/*"],
       "$components/*": ["src/components/*"],
@@ -17,5 +16,6 @@
       "name": "@astrojs/ts-plugin"
     }
   ],
-  "exclude": ["node_modules", "node_modules/.pnpm"]
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", "node_modules", "node_modules/.pnpm"]
 }

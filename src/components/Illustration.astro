@@ -1,4 +1,5 @@
 ---
+import type { AstroInstance } from "astro";
 import { getFileName } from "$lib/file";
 
 export interface Props {
@@ -7,11 +8,13 @@ export interface Props {
 }
 
 const { name, ...rest } = Astro.props;
-const illustrations = await Astro.glob("../svg/illustrations/*.astro");
-const illustration = illustrations.find((illustration) => {
-  const fileName = getFileName(illustration.file).toLocaleLowerCase();
+
+const illustrations = import.meta.glob<AstroInstance>("../svg/illustrations/*.astro", { eager: true });
+const illustrationKey = Object.keys(illustrations).find((key) => {
+  const fileName = getFileName(key).toLocaleLowerCase();
   return fileName === name;
 });
+const illustration = illustrations[illustrationKey as string];
 const Component = illustration ? illustration.default : undefined;
 ---
 
