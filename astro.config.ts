@@ -1,9 +1,9 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel";
 import compress from "@playform/compress";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://menno.dev",
@@ -13,12 +13,8 @@ export default defineConfig({
       enabled: true,
     },
   }),
-  integrations: [
-    mdx(),
-    sitemap(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    compress(),
-  ],
+  integrations: [mdx(), sitemap(), compress()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
