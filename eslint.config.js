@@ -1,16 +1,15 @@
+import { defineConfig } from "eslint/config";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginAstro from "eslint-plugin-astro";
 import eslintPluginA11y from "eslint-plugin-jsx-a11y";
-import eslintPluginTailwind from "eslint-plugin-tailwindcss";
 import globals from "globals";
 
-export default tseslint.config(
+export default defineConfig(
   eslint.configs.recommended,
   eslintPluginA11y.flatConfigs.strict,
   ...tseslint.configs.strictTypeChecked,
   ...eslintPluginAstro.configs["flat/recommended"],
-  ...eslintPluginTailwind.configs["flat/recommended"],
   {
     languageOptions: {
       globals: {
@@ -48,6 +47,7 @@ export default tseslint.config(
       "**/dist/*",
       "**/public/*",
       "src/env.d.ts",
+      ".prettierrc.js",
     ],
-  }
+  },
 );

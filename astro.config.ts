@@ -15,6 +15,7 @@ export default defineConfig({
   }),
   integrations: [mdx(), sitemap(), compress()],
   vite: {
+    // @ts-expect-error https://github.com/withastro/astro/issues/14030
     plugins: [tailwindcss()],
   },
 });
